@@ -23,6 +23,14 @@ function App() {
     setCounters(countersUpdated);
   };
 
+  const handleDecrement = (counter) => {
+    const countersUpdated = [...counters];
+    const index = countersUpdated.indexOf(counter);
+    countersUpdated[index] = { ...counter };
+    countersUpdated[index].value--;
+    setCounters(countersUpdated);
+  };
+
   const handleReset = () => {
     const countersReset = counters.map((c) => {
       c.value = 0;
@@ -39,6 +47,7 @@ function App() {
           counters={counters}
           onDelete={handleDelete}
           onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
           onReset={handleReset}
         />
       </main>

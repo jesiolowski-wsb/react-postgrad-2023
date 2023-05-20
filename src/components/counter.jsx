@@ -11,18 +11,32 @@ const Counter = (props) => {
   };
 
   return (
-    <>
-      <span className={getClassNames()}>{formatCount()}</span>
-      <button className="btn" onClick={() => props.onIncrement(props.counter)}>
-        +
-      </button>
-      <button
-        onClick={() => props.onDelete(props.counter.id)}
-        className="btn btn-danger btn-sm m-2"
-      >
-        delete
-      </button>
-    </>
+    <div className="row">
+      <div className="col-1">
+        <span className={getClassNames()}>{formatCount()}</span>
+      </div>
+      <div className="col d-flex align-items-start">
+        <button
+          className="btn btn-secondary btn-sm ml-2"
+          onClick={() => props.onIncrement(props.counter)}
+        >
+          +
+        </button>
+        <button
+          onClick={() => props.onDecrement(props.counter)}
+          className="btn btn-secondary btn-sm ml-2 mr-2"
+          disabled={!props.counter.value}
+        >
+          -
+        </button>
+        <button
+          onClick={() => props.onDelete(props.counter.id)}
+          className="btn btn-danger btn-sm"
+        >
+          X
+        </button>
+      </div>
+    </div>
   );
 };
 
